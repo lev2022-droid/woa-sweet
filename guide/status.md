@@ -8,15 +8,15 @@ The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-b
 
 #### Features
 
-- [x] Display (AMOLED, framebuffer)
+- [x] Display 
 - [x] Battery status (fuel gauge, real %)
 - [x] Battery tray icon (power source)
-- [x] UFS storage (256 GB)
-- [x] USB (mass storage / MTP)
-- [x] Wi-Fi (WCN3980, byte-verified package)
-- [x] Bluetooth (UART transport)
+- [x] UFS storage 
+- [x] USB 
+- [x] Wi-Fi 
+- [x] Bluetooth 
 - [x] Cellular (calls / SMS / mobile data)
-- [x] Vibration (AW8624 haptics)
+- [x] Vibration 
 - [ ] Touchscreen (Goodix GT9896 — driver in development, use a USB mouse)
 - [ ] GPU acceleration (Adreno 618 — framebuffer only for now)
 - [ ] Loudspeakers (AW882xx amplifier has no driver yet; the earpiece codec works)
@@ -42,10 +42,6 @@ The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-b
 - [ ] Security Processor
 - [ ] TPM (Software Backed)
 
-#### Dual boot
-
-- [x] Android → Windows (WOA Helper app / `fastboot boot boot-sweet.img`)
-- [x] Windows → Android (reboot to bootloader, flash back `boot_backup.img`)
 
 ## Notes
 

@@ -69,44 +69,38 @@ bcdboot X:\Windows /s Y: /f UEFI
 ```
 
 ##### Installing all drivers (offline)
-> One command — installs every package in `sweet_drivers_all\` and enables testsigning
+> One command — installs every package in `sweet_drivers` and enables testsigning
 ```cmd
-D:\path\to\sweet_drivers_all\INSTALL-ALL.cmd X Y
+dism /Image:letter phone:\ /Add-Driver /Driver:"the path to the drivers folder" /Recurse
+
 ```
-> `X` = the winnt letter, `Y` = the ESP letter. The script runs `dism /add-driver /recurse /ForceUnsigned` and `bcdedit /store Y:\EFI\Microsoft\Boot\BCD /set testsigning on` for you.
 
 ### Recommended BCD tweaks
 
 > Run these against the phone's **offline** BCD from the PC (ESP mounted as `Y:`), or from Windows on the phone by dropping the `/store Y:\EFI\Microsoft\Boot\BCD` part. Each command is separate on purpose — you decide which ones you need.
 
 ##### Test mode — allow test-signed drivers
-> This is what makes the battery fuel-gauge driver (pmfg26i) load: it's signed with a WDK test certificate, which Windows refuses without test mode. `INSTALL-ALL.cmd` already enables it — listed here for reference or for re-doing it manually.
 ```cmd
 bcdedit /store Y:\EFI\Microsoft\Boot\BCD /set testsigning on
 ```
 
 ##### Disable integrity checks — allow unsigned kernel drivers
-> Relaxes the kernel driver-signing check. Useful if you install any driver without a valid signature and it fails with code 52 (ERROR_DRIVER_BLOCKED). Together with test mode it covers all test/unsigned driver cases.
 ```cmd
 bcdedit /store Y:\EFI\Microsoft\Boot\BCD /set nointegritychecks on
 ```
 
 ##### Disable Windows Recovery — no automatic-repair loops
-> Turns off Windows Recovery Environment (automatic repair) for this boot entry. On a phone there is no keyboard to confirm repair screens, and a failed boot can drop you into an RE loop that drains the battery — this makes a bad boot fail visibly (BSOD) instead, which is easier to diagnose.
 ```cmd
 bcdedit /store Y:\EFI\Microsoft\Boot\BCD /set recoveryenabled no
 ```
 
 ##### Rebooting into Windows
-```cmd
-shutdown /r /t 0     (on the phone, or just unplug and power on)
-```
+
 > First boot takes a few minutes (OOBE). **A USB mouse is required** — the touchscreen driver does not exist yet.
 
 #### What works right after boot
 - Tray battery icon appears immediately; the real percentage binds ~1 minute later
 - Wi-Fi connects automatically (if not: `pnputil /add-driver WLAN-standalone\x3n_wlan.inf /install` in Windows)
-- See [Project status](status.md) for the full checklist
 
 ## Dual boot
 

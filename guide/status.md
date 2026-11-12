@@ -4,37 +4,36 @@
 
 ## Project Status
 
-The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-based UEFI (v2), Wi-Fi / cellular / Bluetooth / battery percentage work out of the box. Expect driver updates (touch, loudspeakers, GPU) in the near future.
+The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based UEFI (v2, with the SSDT-power battery table). Expect driver updates (touch, loudspeakers, GPU) in the near future.
 
 #### Features
 
-- [x] Display (AMOLED, framebuffer)
-- [x] Battery status (fuel gauge, real %)
-- [x] Battery tray icon (power source)
-- [x] UFS storage (256 GB)
-- [x] USB (mass storage / MTP)
-- [x] Wi-Fi (WCN3980, byte-verified package)
-- [x] Bluetooth (UART transport)
-- [x] Cellular (calls / SMS / mobile data)
-- [x] Vibration (AW8624 haptics)
-- [ ] Touchscreen (Goodix GT9896 — driver in development, use a USB mouse)
-- [ ] GPU acceleration (Adreno 618 — framebuffer only for now)
-- [ ] Loudspeakers (AW882xx amplifier has no driver yet; the earpiece codec works)
-- [ ] Brightness control (needs DTBO dump → ACPI _BCM)
-- [ ] Charging (trickle ~0.005 W only — keep the cable connected)
-- [ ] Camera
+- [x] Audio (earpiece codec — loudspeakers need the AW882xx amp driver)
 - [ ] Microphone
-- [ ] NFC
-- [ ] 3.5 mm jack
+- [ ] Jack 3.5 Audio
+- [x] Battery status (real fuel-gauge %, needs testsigning — enabled by the installer)
+- [x] Battery tray icon (power source, works immediately)
+- [x] Bluetooth
+- [ ] Brightness
+- [ ] Camera
+- [x] Cellular (calls / SMS / mobile data)
+- [ ] Charging (trickle ~0.005 W only — keep the cable connected)
+- [x] Display (AMOLED, framebuffer)
+- [ ] GPU (Adreno 618 — framebuffer only, no acceleration)
+- [ ] Touchscreen (Goodix GT9896 driver in development — use a USB mouse)
+- [x] Vibration (AW8624 haptics)
+- [x] UFS (256 GB)
+- [x] USB (mass storage / MTP)
+- [x] Wi-Fi (byte-verified package, connects automatically)
 
 #### Sensors
-
 - [ ] Accelerometer
 - [ ] Fingerprint
 - [ ] GPS
 - [ ] Gyroscope
 - [ ] Light sensor
 - [ ] Magnetometer
+- [ ] NFC
 - [ ] Proximity
 
 #### Security
@@ -45,10 +44,18 @@ The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-b
 #### Dual boot
 
 - [x] Android → Windows (WOA Helper app / `fastboot boot boot-sweet.img`)
-- [x] Windows → Android (reboot to bootloader, flash back `boot_backup.img`)
+- [x] Windows → Android (reboot to bootloader → flash back `boot_backup.img`)
+
+#### What you need
+
+- Unlocked bootloader (Mi Unlock, ~168 h wait — wipes all data)
+- USB-C OTG hub + USB mouse (**required** — no touchscreen driver yet)
+- A Windows 11 ARM64 ISO (23H2 tested)
+- The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\`
 
 ## Notes
 
-- **Battery**: the tray icon appears immediately (static control-method battery in the SSDT); the real fuel-gauge percentage (pmfg26i driver) binds about a minute after boot. Requires `testsigning on` — `INSTALL-ALL.cmd X Y` enables it automatically.
-- **Touch**: the digitizer (Goodix GT9896 on I2C7) has no driver yet — **a USB mouse through a USB-C OTG hub is required** for setup and UEFI.
-- **GPU**: no Qualcomm GPU node exists in any public ACPI table for this SoC, so display runs on the framebuffer. The DX driver package ships in the pack for the day it becomes usable.
+- The tray battery icon appears immediately (static ACPI battery from the SSDT); the real percentage binds about a minute after boot.
+- If the percentage freezes at one number, `testsigning` is off — see [troubleshooting](troubleshooting.md#battery-percentage-stuck--no-percentage).
+- Charging runs in trickle mode under Windows: long sessions need the cable.
+- No Qualcomm GPU node exists in any public ACPI table for this SoC, so display runs on the framebuffer. The DX driver package ships in the pack for the day it becomes usable.

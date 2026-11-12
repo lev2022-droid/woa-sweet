@@ -2,12 +2,7 @@
 
 # Running Windows on the Xiaomi Redmi Note 10 Pro
 
-[![Telegram](https://img.shields.io/badge/chat-telegram-brightgreen.svg?logo=telegram&style=flat-square)](https://t.me/woasweet)
-[![XDA](https://img.shields.io/badge/forum-XDA-blueviolet.svg?logo=android&style=flat-square)](https://xdaforums.com/t/4792566)
-[![Discord](https://img.shields.io/badge/chat-discord-5865F2.svg?logo=discord&style=flat-square)](https://discord.gg/XXBWfag)
-[![Windows](https://img.shields.io/badge/Windows%2011%20ARM64-23H2-blue.svg?style=flat-square&logo=windows)](https://github.com/woa-sweet/woa-sweet)
-[![UEFI](https://img.shields.io/badge/UEFI-v2%20(SSDT%20power)-success.svg?style=flat-square)](https://github.com/woa-sweet/woa-sweet)
-[![Status](https://img.shields.io/badge/status-beta%20(boots%2C%20battery%20%25)-orange.svg?style=flat-square)](guide/status.md)
+
 
 
 ## ⚠️ Warning

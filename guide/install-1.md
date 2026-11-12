@@ -6,8 +6,8 @@
 
 ### What you need
 
-1. **Unlocked bootloader** .
-2. [platform-tools](https://developer.android.com/tools/releases/platform-tools).
+1. **Unlocked bootloader**
+2. [Platform-tools](https://developer.android.com/tools/releases/platform-tools).
 3. **USB-C OTG hub + USB mouse** — the touchscreen does not work in Windows or UEFI yet.
 4. A Windows 11 ARM64 ISO / install.wim / install.esd .
 5. The package: `boot-sweet.img`, `sweet_drivers_all\`.

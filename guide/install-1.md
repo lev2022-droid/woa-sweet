@@ -6,11 +6,11 @@
 
 ### What you need
 
-1. **Unlocked bootloader** (Mi Unlock — the 168h timer must be expired). Unlocking **wipes all data**.
-2. A PC with Windows + [platform-tools](https://developer.android.com/tools/releases/platform-tools) (adb/fastboot).
+1. **Unlocked bootloader** .
+2. [platform-tools](https://developer.android.com/tools/releases/platform-tools).
 3. **USB-C OTG hub + USB mouse** — the touchscreen does not work in Windows or UEFI yet.
-4. A Windows 11 ARM64 ISO / install.wim / install.esd (23H2 tested).
-5. The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\`.
+4. A Windows 11 ARM64 ISO / install.wim / install.esd .
+5. The package: `boot-sweet.img`, `sweet_drivers_all\`.
 
 ### Step 1 — Backups (do this first!)
 
@@ -18,19 +18,21 @@ Boot to Android, enable USB debugging, then:
 
 ```
 adb shell su -c "dd if=/dev/block/by-name/boot of=/sdcard/boot_backup.img"
+
 adb shell su -c "dd if=/dev/block/by-name/dtbo of=/sdcard/dtbo_backup.img"
+
 adb pull /sdcard/boot_backup.img
+
 adb pull /sdcard/dtbo_backup.img
+
 ```
 
 Keep these two files — they are your way back to Android. First tests always run via `fastboot boot` (RAM only, nothing is flashed).
 
-### Step 2 — Unlock and test the UEFI
+### Step 2 —  test the UEFI
 
 ```
-fastboot flashing unlock        ; wipes data!
-fastboot reboot bootloader
-fastboot boot boot-sweet.img    ; UEFI boots to RAM, nothing flashed
+fastboot boot boot-sweet.img   
 ```
 
 Expected: the SimpleInit graphical menu on the AMOLED screen. Control it with the USB mouse.
@@ -63,7 +65,6 @@ parted /dev/block/sda
   mkpart winnt ntfs 66.3GB 100%         ; Windows, the rest (~200 GB)
   set <esp#> esp on
   quit
-fixgpt                           ; CRITICAL - otherwise Windows wipes the GPT
 ```
 
 ### Step 5 — Apply Windows and drivers
@@ -76,7 +77,9 @@ fixgpt                           ; CRITICAL - otherwise Windows wipes the GPT
 ```
 dism /apply-image /ImageFile:<ISO>\sources\install.esd /index:6 /ApplyDir:X:\
    (check the index with dism /get-imageinfo; you want Windows 11 Pro)
+
 bcdboot X:\Windows /s Y: /f UEFI
+
 D:\path\to\sweet_drivers_all\INSTALL-ALL.cmd X Y
 ```
 
@@ -92,4 +95,5 @@ Reboot the phone. Windows now boots from the phone's internal storage.
 ### Step 7 — Dual boot
 
 - **Windows → Android**: reboot with Volume Down held (bootloader), then `fastboot flash boot boot_backup.img` — or use the WOA Helper app shortcut (root).
+- 
 - **Android → Windows**: WOA Helper app → "Quickboot to Windows" (root), or `fastboot boot boot-sweet.img` from the PC.

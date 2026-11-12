@@ -7,7 +7,8 @@
 ### Prerequisites
 - Completed [Partitioning your device](install-1.md)
 - The phone's Windows (`winnt`) and ESP partitions visible from the PC
-- `boot-sweet.img`, `sweet_drivers_all\` and your Windows 11 ARM64 ISO (23H2 tested)
+-  [UEFI (soon) ](https://)
+-  [Drivers](https://github.com/lev2022-droid/woa-sweet/releases/tag/Drivers) 
 
 ### Notes
 > [!WARNING]  

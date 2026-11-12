@@ -1,4 +1,4 @@
-<img align="right" src="../media/Redmi-Note-10-Pro.jpg" width="350" alt="Windows 11 Running On sweet">
+<img align="right" src="../media/Redmi-Note-10-Pro.png" width="350" alt="Windows 11 Running On sweet">
 
 # Running Windows on the Xiaomi Redmi Note 10 Pro
 

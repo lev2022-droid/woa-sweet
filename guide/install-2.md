@@ -7,7 +7,8 @@
 ### Prerequisites
 - Completed [Partitioning your device](install-1.md)
 - The phone's Windows (`winnt`) and ESP partitions visible from the PC
-- `boot-sweet.img`, `sweet_drivers_all\` and your Windows 11 ARM64 ISO (23H2 tested)
+-  [UEFI (soon) ](https://)
+-  [Drivers](https://github.com/lev2022-droid/woa-sweet/releases/tag/Drivers) 
 
 ### Notes
 > [!WARNING]  
@@ -17,8 +18,6 @@
 >
 > Do NOT unplug the phone during apply. The process takes 10–30 minutes depending on USB speed.
 
-> [!IMPORTANT]
-> The second argument of `INSTALL-ALL.cmd` (the ESP letter) enables `testsigning` in the phone's BCD — the battery fuel-gauge driver needs it. Without it you get a tray icon but a frozen percentage.
 
 ##### Booting the UEFI with mass storage
 ```cmd

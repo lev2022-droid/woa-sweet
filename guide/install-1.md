@@ -8,12 +8,12 @@
 - A brain (most important of all)
 - An **unlocked bootloader** (Mi Unlock — the ~168h wait timer must be expired; unlocking wipes all data)
 - Latest MIUI / Android installed with **root** (Magisk works)
-- [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser — mirrors are bot-protected)
+- [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser )
 
 - [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
 
 - A **USB-C OTG hub + USB mouse** (no touchscreen in UEFI/Windows yet)
-- The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\` and a **Windows 11 ARM64 ISO** (23H2 tested)
+- The package: `boot-sweet.img`, `sweet_drivers\`, `WLAN-standalone\` and a **Windows 11 ARM64 ISO** (23H2 tested)
 
 ### Notes
 > [!WARNING]  

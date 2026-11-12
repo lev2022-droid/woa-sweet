@@ -18,9 +18,9 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Cellular 
 - [ ] SMS
 - [ ] Сalls
-- [ ] Charging (trickle ~0.005 W only — keep the cable connected)
+- [ ] Charging (trickle ~0.005 W only )
 - [x] Display 
-- [ ] GPU ( framebuffer only )
+- [ ] GPU 
 - [ ] Touchscreen (Goodix GT9896 driver in development — use a USB mouse)
 - [x] Vibration 
 - [x] UFS 

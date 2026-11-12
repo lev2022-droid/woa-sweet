@@ -12,6 +12,7 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Microphone
 - [ ] Jack 3.5 Audio
 - [x] Battery status
+- [x] Battery tray icon
 - [x] Bluetooth
 - [ ] Brightness
 - [ ] Camera
@@ -40,10 +41,21 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Security Processor
 - [ ] TPM (Software Backed)
 
+#### Dual boot
 
+- [x] Android → Windows
+- [x] Windows → Android
+
+#### What you need
+
+- Unlocked bootloader (Mi Unlock, ~168 h wait — wipes all data)
+- USB-C OTG hub + USB mouse (**required** — no touchscreen driver yet)
+- A Windows 11 ARM64 ISO (23H2 tested)
+- The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\`
 
 ## Notes
 
+- The tray battery icon appears immediately (static ACPI battery from the SSDT); the real percentage binds about a minute after boot.
 - If the percentage freezes at one number, `testsigning` is off — see [troubleshooting](troubleshooting.md#battery-percentage-stuck--no-percentage).
 - Charging runs in trickle mode under Windows: long sessions need the cable.
 - No Qualcomm GPU node exists in any public ACPI table for this SoC, so display runs on the framebuffer. The DX driver package ships in the pack for the day it becomes usable.

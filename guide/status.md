@@ -4,7 +4,7 @@
 
 ## Project Status
 
-The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-based UEFI (v2), Wi-Fi / cellular / Bluetooth / battery percentage work out of the box. Expect driver updates (touch, loudspeakers, GPU) in the near future.
+The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-based UEFI (v2), Wi-Fi  / Bluetooth / battery percentage work out of the box. Expect driver updates (touch, loudspeakers, GPU) in the near future.
 
 #### Features
 

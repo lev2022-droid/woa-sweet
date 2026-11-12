@@ -47,7 +47,7 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 
 #### What you need
 
-- Unlocked bootloader (Mi Unlock, ~168 h wait — wipes all data)
+- Unlocked bootloader
 - USB-C OTG hub + USB mouse (**required** — no touchscreen driver yet)
 - A Windows 11 ARM64 ISO (23H2 tested)
 - The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\`

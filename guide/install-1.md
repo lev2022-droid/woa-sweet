@@ -1,99 +1,131 @@
-<img align="right" src="../media/Redmi-Note-10-Pro.png" width="350" alt="Windows 11 Running On sweet">
+<img align="right" src="../media/Redmi-Note-10-Pro.png" width="350" alt="Windows 11 running on sweet">
 
 # Running Windows on the Xiaomi Redmi Note 10 Pro
 
-## Installation instructions
+## Partitioning your device
 
-### What you need
+### Prerequisites
+- A brain (most important of all)
+- An **unlocked bootloader** (Mi Unlock — the ~168h wait timer must be expired; unlocking wipes all data)
+- Latest MIUI / Android installed with **root** (Magisk works)
+- [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser — mirrors are bot-protected)
 
-1. **Unlocked bootloader**
-2. [Platform-tools](https://developer.android.com/tools/releases/platform-tools).
-3. **USB-C OTG hub + USB mouse** — the touchscreen does not work in Windows or UEFI yet.
-4. A Windows 11 ARM64 ISO / install.wim / install.esd .
-5. The package: `boot-sweet.img`, `sweet_drivers_all\`.
+- [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
 
-### Step 1 — Backups (do this first!)
+- A **USB-C OTG hub + USB mouse** (no touchscreen in UEFI/Windows yet)
+- The package: `boot-sweet.img`, `sweet_drivers_all\`, `WLAN-standalone\` and a **Windows 11 ARM64 ISO** (23H2 tested)
 
-Boot to Android, enable USB debugging, then:
+### Notes
+> [!WARNING]  
+> All your data will be erased! Backup now if needed.
+> 
+> `boot-sweet.img` is **booted**, not flashed — never run `fastboot flash boot boot-sweet.img`. Use `fastboot boot` only. To restore Android afterwards you flash back your own `boot_backup.img`.
+> 
+> Do not run the same command twice.
+> 
+> DO NOT REBOOT YOUR PHONE if you think you made a mistake, ask for help in the [Telegram chat](https://t.me/woasweet).
+> 
+> Do not run all commands at once, execute them in order!
+>
+> YOU CAN BREAK YOUR DEVICE WITH THE COMMANDS BELOW IF YOU DO THEM WRONG!!!
 
-```
+> [!IMPORTANT]
+> Make sure you go through this whole tutorial with the provided `boot-sweet.img` (UEFI v2, SSDT-power build, md5 `4d589d06`). Do not mix it with UEFIs from other threads — the battery table ships inside this image.
+
+##### Backing up important files
+> Boot to Android (root required), open a CMD window in the platform-tools folder, then run
+```cmd
 adb shell su -c "dd if=/dev/block/by-name/boot of=/sdcard/boot_backup.img"
-
 adb shell su -c "dd if=/dev/block/by-name/dtbo of=/sdcard/dtbo_backup.img"
-
 adb pull /sdcard/boot_backup.img
-
 adb pull /sdcard/dtbo_backup.img
-
 ```
+> Keep both images on your PC — they are your way back to Android.
 
-Keep these two files — they are your way back to Android. First tests always run via `fastboot boot` (RAM only, nothing is flashed).
+> [!warning]
+> **IF YOU PROCEED WITHOUT BACKING UP `boot` AND `dtbo`, YOU ARE ON YOUR OWN IF YOU MESS UP**
 
-### Step 2 —  test the UEFI
-
+##### Testing the UEFI (nothing is flashed)
+> Reboot to the bootloader and boot our UEFI from RAM
+```cmd
+adb reboot bootloader
+fastboot boot boot-sweet.img
 ```
-fastboot boot boot-sweet.img   
-```
+> Expected: the SimpleInit graphical menu on the AMOLED screen. Control it with the USB mouse.
+>
+> Black screen / hang → hold power ~10s, Android is intact. Try again or ask in the chat.
+>
+> Partitioning below is done from TWRP.
 
-Expected: the SimpleInit graphical menu on the AMOLED screen. Control it with the USB mouse.
+### Partitioning guide
+> Your phone has 128GB or 256GB of storage. This guide keeps ~54GB for Android and gives the rest to Windows, as an example.
 
-- Menu visible → go to Step 3.
-- Black screen / hang → reboot (Android is still intact) and try `boot-surya.img` as a fallback.
-
-### Step 3 — Dump DTBO (for brightness/touch bring-up later)
-
-In Android (root):
-
-```
-adb shell su -c "dd if=/dev/block/by-name/dtbo of=/sdcard/dtbo.img"
-adb pull /sdcard/dtbo.img
-```
-
-Keep this file — the panel config and touch IRQ live in it.
-
-### Step 4 — Repartition (wipes Android data!)
-
-Via TWRP for sweet, or from the UEFI mass-storage mode on the PC:
-
-```
+##### Extending the partition limit
+> Boot TWRP (`fastboot boot twrp.img` from the bootloader), open its Terminal, then run
+```cmd
 sgdisk --resize-table 64 /dev/block/sda
+```
+
+##### Opening parted
+```cmd
 parted /dev/block/sda
-  print                          ; find the userdata partition number
-  rm <userdata#>
-  mkpart userdata ext4 11.7GB 66GB      ; Android ~54 GB
-  mkpart esp fat32 66GB 66.3GB          ; ESP 300 MB
-  mkpart winnt ntfs 66.3GB 100%         ; Windows, the rest (~200 GB)
-  set <esp#> esp on
-  quit
 ```
 
-### Step 5 — Apply Windows and drivers
-
-1. `fastboot boot boot-sweet.img`
-2. In the UEFI (mouse!), enable **USB Mass Storage**.
-3. On the PC, assign drive letters in diskpart: `X:` = winnt (big partition), `Y:` = esp (300 MB FAT32).
-4. From an elevated prompt:
-
-```
-dism /apply-image /ImageFile:<ISO>\sources\install.esd /index:6 /ApplyDir:X:\
-   (check the index with dism /get-imageinfo; you want Windows 11 Pro)
-
-bcdboot X:\Windows /s Y: /f UEFI
-
-D:\path\to\sweet_drivers_all\INSTALL-ALL.cmd X Y
+##### Printing the current table partition:
+> Parted will print the list of partitions, userdata should be the last partition in the list.
+```cmd
+print
 ```
 
-`INSTALL-ALL.cmd X Y` installs all driver packages offline (`/ForceUnsigned`) **and enables testsigning in the phone's BCD** — required for the battery driver. Pass the ESP letter as the second argument.
+##### Deleting userdata
+> Replace $ with the number of the userdata partition
+>
+> If it asks you if you are okay with data loss, type yes
+```cmd
+rm $
+```
 
-### Step 6 — Reboot into Windows
+##### Recreating userdata (Android keeps ~54GB)
+> 11.7GB is where the stock userdata begins (check your `print` output) and 66GB is where Android ends
+```cmd
+mkpart userdata ext4 11.7GB 66GB
+```
 
-Reboot the phone. Windows now boots from the phone's internal storage.
+##### Creating ESP partition
+> 66GB is the **End** of **userdata** in this example and 66.3GB is the end of the ESP partition we will be creating, which will be 300MB in size
+```cmd
+mkpart esp fat32 66GB 66.3GB
+```
 
-- Tray battery icon appears immediately; the real percentage binds ~1 minute after boot.
-- Wi-Fi should connect automatically. If not: `pnputil /add-driver WLAN-standalone\x3n_wlan.inf /install`.
+> Replace "$" with your ESP partition number, usually the one right after userdata
+```cmd
+set $ esp on
+```
 
-### Step 7 — Dual boot
+##### Creating Windows partition
+> 100% means "until the end of storage" — ~200GB on the 256GB model
+```cmd
+mkpart winnt ntfs 66.3GB 100%
+```
 
-- **Windows → Android**: reboot with Volume Down held (bootloader), then `fastboot flash boot boot_backup.img` — or use the WOA Helper app shortcut (root).
-- 
-- **Android → Windows**: WOA Helper app → "Quickboot to Windows" (root), or `fastboot boot boot-sweet.img` from the PC.
+##### Fixing the GPT backup
+> CRITICAL — without this, Windows setup may wipe the partition table
+```cmd
+fixgpt
+```
+
+##### Exit parted
+```cmd
+quit
+```
+> Ignore "Information: You may need to update /etc/fstab."
+
+##### Formatting data
+Format all data in TWRP, or Android will not boot.
+( Go to Wipe > Format data > type yes )
+
+#### Check if Android still starts
+Just restart the phone, and see if Android still works
+
+
+## [Next step: Installing Windows](/guide/install-2.md)

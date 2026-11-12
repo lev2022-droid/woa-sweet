@@ -9,7 +9,7 @@
 
 We're not responsible for bricked devices, missing recovery partitions, dead xiaomi factoryline ~~workers~~ cowboys, dead pmics, dead ram, dead sim cards, dead display ics, dead cpus, any xiaomi/redmi shenanigans, exploding batteries, dead cats or dogs, nuclear wars or you getting fired because you forgot to boot back in to android for the alarm.
 
-This project is in an early stage. Your bootloader **must be unlocked** (Mi Unlock, ~168h wait), and installing Windows **wipes your data**. Everything is tested through RAM-booting (`fastboot boot`) first — nothing is flashed until you decide to.
+This project is in an early stage. Your bootloader **must be unlocked**, and installing Windows **wipes your data**. Everything is tested through RAM-booting (`fastboot boot`) first — nothing is flashed until you decide to.
 
 **IF YOU AREN'T COMFORTABLE MODDING YOUR PHONE OR ITS PARTITION TABLE OR YOU ARE PARANOID OF BRICKING YOUR DEVICE CLICK AWAY NOW!!! YOU HAVE BEEN WARNED, YOU ARE ON YOUR OWN IF YOU BRICK YOUR DEVICE!!! AGAIN! YOU HAVE BEEN WARNED!!!**
 

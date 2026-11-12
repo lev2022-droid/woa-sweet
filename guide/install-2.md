@@ -33,20 +33,28 @@ fastboot boot boot-sweet.img
 ```cmd
 diskpart
 ```
+```cmd
 list disk
 ```
+```cmd
 select disk <phone disk number>
 ```
+```cmd
 list partition
 ```
+```cmd
 select partition <winnt>
 ```
+```cmd
 assign letter=X
 ```
+```cmd
 select partition <esp>
 ```
+```cmd
 assign letter=Y
 ```
+```cmd
 exit
 ```
 

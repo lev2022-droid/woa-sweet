@@ -12,11 +12,10 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Microphone
 - [ ] Jack 3.5 Audio
 - [x] Battery status
-- [x] Battery tray icon
 - [x] Bluetooth
 - [ ] Brightness
 - [ ] Camera
-- [x] Cellular
+- [ ] Cellular
 - [ ] Charging (trickle ~0.005 W only — keep the cable connected)
 - [x] Display
 - [ ] GPU

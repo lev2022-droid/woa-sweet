@@ -6,7 +6,7 @@
 
 ### Prerequisites
 - A brain (most important of all)
-- An **unlocked bootloader** (Mi Unlock — the ~168h wait timer must be expired; unlocking wipes all data)
+- An **unlocked bootloader** 
 - Latest MIUI / Android installed with **root** (Magisk works)
 - [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser )
 

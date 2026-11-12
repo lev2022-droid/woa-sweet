@@ -9,16 +9,17 @@ The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-b
 #### Features
 
 - [x] Display 
-- [x] Battery status (fuel gauge, real %)
-- [x] Battery tray icon (power source)
-- [x] UFS storage 
+- [x] Battery status 
+- [x] UFS 
 - [x] USB 
 - [x] Wi-Fi 
 - [x] Bluetooth 
-- [x] Cellular (calls / SMS / mobile data)
+- [ ] Cellular
+- [ ] SMS
+- [ ] Calls
 - [x] Vibration 
 - [ ] Touchscreen (Goodix GT9896 — driver in development, use a USB mouse)
-- [ ] GPU acceleration (Adreno 618 — framebuffer only for now)
+- [ ] GPU acceleration (framebuffer only for now)
 - [ ] Loudspeakers (AW882xx amplifier has no driver yet; the earpiece codec works)
 - [ ] Brightness control (needs DTBO dump → ACPI _BCM)
 - [ ] Charging (trickle ~0.005 W only — keep the cable connected)
@@ -45,6 +46,5 @@ The project is in **beta**. The phone boots Windows 11 ARM64 from the Renegade-b
 
 ## Notes
 
-- **Battery**: the tray icon appears immediately (static control-method battery in the SSDT); the real fuel-gauge percentage (pmfg26i driver) binds about a minute after boot. Requires `testsigning on` — `INSTALL-ALL.cmd X Y` enables it automatically.
 - **Touch**: the digitizer (Goodix GT9896 on I2C7) has no driver yet — **a USB mouse through a USB-C OTG hub is required** for setup and UEFI.
 - **GPU**: no Qualcomm GPU node exists in any public ACPI table for this SoC, so display runs on the framebuffer. The DX driver package ships in the pack for the day it becomes usable.

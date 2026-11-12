@@ -6,7 +6,7 @@
 
 ### Prerequisites
 - A brain (most important of all)
-- An **unlocked bootloader** 
+- An **unlocked bootloader** (Mi Unlock — the ~168h wait timer must be expired; unlocking wipes all data)
 - Latest MIUI / Android installed with **root** (Magisk works)
 - [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser — mirrors are bot-protected)
 
@@ -108,17 +108,19 @@ set $ esp on
 mkpart winnt ntfs 66.3GB 100%
 ```
 
-##### Fixing the GPT backup
-> CRITICAL — without this, Windows setup may wipe the partition table
-```cmd
-fixgpt
-```
-
 ##### Exit parted
 ```cmd
 quit
 ```
 > Ignore "Information: You may need to update /etc/fstab."
+
+##### Fixing the GPT backup
+> CRITICAL — without this, Windows setup may wipe the partition table.
+>
+> Note: TWRP for sweet has **no** `fixgpt` command — do it directly with sgdisk (this is exactly what fixgpt does: move the backup GPT header to the true end of the disk)
+```cmd
+sgdisk -e /dev/block/sda
+```
 
 ##### Formatting data
 Format all data in TWRP, or Android will not boot.

@@ -35,7 +35,7 @@ Reboot. Known quirk of the WCN stack on SM7150.
 
 ### Windows partition not visible in UEFI mass storage
 
-You most likely forgot `fixgpt` after repartitioning. Redo Step 4 (repartition is destructive — back up first).
+You most likely forgot `sgdisk -e /dev/block/sda` after repartitioning (TWRP for sweet has no `fixgpt` command — `sgdisk -e` does the same job). Redo Step 4 (repartition is destructive — back up first).
 
 ### Roll back to Android
 

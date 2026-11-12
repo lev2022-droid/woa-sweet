@@ -11,20 +11,20 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [x] Audio (earpiece codec — loudspeakers need the AW882xx amp driver)
 - [ ] Microphone
 - [ ] Jack 3.5 Audio
-- [x] Battery status (real fuel-gauge %, needs testsigning — enabled by the installer)
-- [x] Battery tray icon (power source, works immediately)
+- [x] Battery status
+- [x] Battery tray icon
 - [x] Bluetooth
 - [ ] Brightness
 - [ ] Camera
-- [x] Cellular (calls / SMS / mobile data)
+- [x] Cellular
 - [ ] Charging (trickle ~0.005 W only — keep the cable connected)
-- [x] Display (AMOLED, framebuffer)
-- [ ] GPU (Adreno 618 — framebuffer only, no acceleration)
+- [x] Display
+- [ ] GPU
 - [ ] Touchscreen (Goodix GT9896 driver in development — use a USB mouse)
-- [x] Vibration (AW8624 haptics)
-- [x] UFS (256 GB)
-- [x] USB (mass storage / MTP)
-- [x] Wi-Fi (byte-verified package, connects automatically)
+- [x] Vibration
+- [x] UFS
+- [x] USB
+- [x] Wi-Fi
 
 #### Sensors
 - [ ] Accelerometer
@@ -43,8 +43,8 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 
 #### Dual boot
 
-- [x] Android → Windows (WOA Helper app / `fastboot boot boot-sweet.img`)
-- [x] Windows → Android (reboot to bootloader → flash back `boot_backup.img`)
+- [x] Android → Windows
+- [x] Windows → Android
 
 #### What you need
 

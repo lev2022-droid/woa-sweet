@@ -47,6 +47,8 @@ dism /get-imageinfo /imagefile:<ISO>\sources\install.esd
 ```
 ```cmd
 dism /apply-image /imagefile:<ISO>\sources\install.esd /index:6 /ApplyDir:X:\
+```
+```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
 

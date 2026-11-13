@@ -7,11 +7,9 @@
 ### Prerequisites
 - A brain (most important of all)
 - An **unlocked bootloader** 
-- Latest MIUI / Android installed with **root** (Magisk works)
+- Latest MIUI / Android installed with **root**
 - [TWRP for sweet](https://dl.twrp.me/sweet/) (download in a browser )
-
 - [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
-
 - A **USB-C OTG hub + USB mouse** (no touchscreen in UEFI/Windows yet)
 - The package: `boot-sweet.img`, `sweet_drivers\`, `WLAN-standalone\` and a **Windows 11 ARM64 ISO** (23H2 tested)
 
@@ -37,6 +35,7 @@
 ```cmd
 adb shell su -c "dd if=/dev/block/by-name/boot of=/sdcard/boot_backup.img"
 adb shell su -c "dd if=/dev/block/by-name/dtbo of=/sdcard/dtbo_backup.img"
+
 adb pull /sdcard/boot_backup.img
 adb pull /sdcard/dtbo_backup.img
 ```
@@ -105,7 +104,7 @@ set $ esp on
 ##### Creating Windows partition
 > 100% means "until the end of storage" — ~200GB on the 256GB model
 ```cmd
-mkpart winnt ntfs 66.3GB 100%
+mkpart WINSWEET ntfs 66.3GB 100%
 ```
 
 ##### Exit parted

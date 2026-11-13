@@ -33,29 +33,18 @@ fastboot boot boot-sweet.img
 > Open an **elevated** CMD and run diskpart
 ```cmd
 diskpart
-```
-```cmd
-list disk
-```
-```cmd
-select disk <phone disk number>
-```
-```cmd
-list partition
-```
-```cmd
-select partition <WINSWEET>
-```
-```cmd
+
+list volume
+
+select volume <phone disk number>
+
 assign letter=X
-```
-```cmd
-select partition <esp>
-```
-```cmd
+
+select volume <esp>
+
 assign letter=Y
-```
-```cmd
+
+
 exit
 ```
 

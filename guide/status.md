@@ -16,6 +16,8 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Brightness
 - [ ] Camera
 - [ ] Cellular
+- [ ] SMS
+- [ ] Calls
 - [ ] Charging (trickle ~0.005 W only — keep the cable connected)
 - [x] Display
 - [ ] GPU

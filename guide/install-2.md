@@ -19,7 +19,7 @@
 > Do NOT unplug the phone during apply. The process takes 10–30 minutes depending on USB speed.
 
 > [!IMPORTANT]
-> The second argument of `INSTALL-ALL.cmd` (the ESP letter) enables `testsigning` in the phone's BCD — the battery fuel-gauge driver needs it. Without it you get a tray icon but a frozen percentage.
+> The second argument of  (the ESP letter) enables `testsigning` in the phone's BCD — the battery fuel-gauge driver needs it. Without it you get a tray icon but a frozen percentage.
 
 ##### Booting the UEFI with mass storage
 ```cmd

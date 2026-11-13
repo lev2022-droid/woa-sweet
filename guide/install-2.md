@@ -7,7 +7,7 @@
 ### Prerequisites
 - Completed [Partitioning your device](install-1.md)
 - The phone's Windows (`winnt`) and ESP partitions visible from the PC
--  [UEFI]([https://](https://github.com/lev2022-droid/woa-sweet/releases/tag/UEFI))
+-  [UEFI](https://github.com/lev2022-droid/woa-sweet/releases/download/UEFI/boot-sweet.img)
 -  [Drivers](https://github.com/lev2022-droid/woa-sweet/releases/tag/Drivers) 
 
 ### Notes
@@ -69,7 +69,7 @@ bcdboot X:\Windows /s Y: /f UEFI
 ```
 
 ##### Installing all drivers (offline)
-> One command — installs every package in `sweet_drivers` and enables testsigning
+> One command — installs every package in `sweet_drivers` 
 ```cmd
 dism /Image:letter phone:\ /Add-Driver /Driver:"the path to the drivers folder" /Recurse
 

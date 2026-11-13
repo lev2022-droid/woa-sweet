@@ -1,6 +1,6 @@
 <img align="right" src="../media/Redmi-Note-10-Pro.png" width="350" alt="Windows 11 running on sweet">
 
-# Running Windows on the Xiaomi Redmi Note 10 Pro
+# Running Windows on the Xiaomi Redmi Note 10 Pro/10 Pro Max 
 
 ## Installing Windows
 

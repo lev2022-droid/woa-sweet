@@ -6,24 +6,25 @@
 
 ### Prerequisites
 - Completed [Partitioning your device](install-1.md)
-- The phone's Windows (`winnt`) and ESP partitions visible from the PC
+- The phone's Windows (`WINSWEET`) and ESP partitions visible from the PC
 -  [UEFI](https://github.com/lev2022-droid/woa-sweet/releases/download/UEFI/boot-sweet.img)
 -  [Drivers](https://github.com/lev2022-droid/woa-sweet/releases/tag/Drivers) 
 
 ### Notes
 > [!WARNING]  
-> `dism /apply-image` erases everything on the `winnt` partition. Make sure you pick the right disk/letters!
+> `dism /apply-image` erases everything on the `WINSWEET` partition. Make sure you pick the right disk/letters!
 > 
 > Double-check the image index before applying — you want Windows 11 **Pro**.
 >
 > Do NOT unplug the phone during apply. The process takes 10–30 minutes depending on USB speed.
 
 > [!IMPORTANT]
-> The second argument of  (the ESP letter) enables `testsigning` in the phone's BCD — the battery fuel-gauge driver needs it. Without it you get a tray icon but a frozen percentage.
+>  Enable `testsigning` in the phone's BCD — the battery fuel-gauge driver needs it. Without it you get a tray icon but a frozen percentage.
 
 ##### Booting the UEFI with mass storage
 ```cmd
 adb reboot bootloader
+
 fastboot boot boot-sweet.img
 ```
 > In the SimpleInit menu (USB mouse!), enable **USB Mass Storage**, then plug the phone into the PC.
@@ -43,7 +44,7 @@ select disk <phone disk number>
 list partition
 ```
 ```cmd
-select partition <winnt>
+select partition <WINSWEET>
 ```
 ```cmd
 assign letter=X
@@ -65,6 +66,7 @@ dism /get-imageinfo /imagefile:<ISO>\sources\install.esd
 ```
 ```cmd
 dism /apply-image /imagefile:<ISO>\sources\install.esd /index:6 /ApplyDir:X:\
+
 bcdboot X:\Windows /s Y: /f UEFI
 ```
 
@@ -100,7 +102,6 @@ bcdedit /store Y:\EFI\Microsoft\Boot\BCD /set recoveryenabled no
 
 #### What works right after boot
 - Tray battery icon appears immediately; the real percentage binds ~1 minute later
-- Wi-Fi connects automatically (if not: `pnputil /add-driver WLAN-standalone\x3n_wlan.inf /install` in Windows)
 
 ## Dual boot
 

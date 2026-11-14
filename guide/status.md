@@ -8,7 +8,7 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 
 #### Features
 
-- [x] Audio (earpiece codec — loudspeakers need the AW882xx amp driver)
+- [ ] Audio (earpiece codec — loudspeakers need the AW882xx amp driver)
 - [ ] Microphone
 - [ ] Jack 3.5 Audio
 - [x] Battery status

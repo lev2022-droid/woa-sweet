@@ -2,6 +2,7 @@
 
 # Running Windows on the Xiaomi Redmi Note 10 Pro/10 Pro Max
 
+[![Telegram](https://img.shields.io/badge/chat-telegram-brightgreen.svg?logo=telegram&style=flat-square)](https://t.me/woa_sweet)
 
 
 

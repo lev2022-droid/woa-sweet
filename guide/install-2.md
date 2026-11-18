@@ -26,6 +26,9 @@
 adb reboot bootloader
 
 fastboot boot boot-sweet.img
+
+adb shell "setprop sys.usb.config ums"
+
 ```
 > In the SimpleInit menu (USB mouse!), enable **USB Mass Storage**, then plug the phone into the PC.
 

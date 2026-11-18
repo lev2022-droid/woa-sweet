@@ -8,7 +8,7 @@
 - A brain (most important of all)
 - An **unlocked bootloader** 
 - Latest MIUI / Android installed with **root**
-- [TWRP for sweet](https://dl.twrp.me/sweet/](https://github.com/lev2022-droid/woa-sweet/releases/download/twrp/twrp-3.7.1_12-0-sweet-mod.img )
+- [TWRP for sweet](https://github.com/lev2022-droid/woa-sweet/releases/download/twrp/twrp-3.7.1_12-0-sweet-mod.img )
 - [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
 - A **USB-C OTG hub + USB mouse** (no touchscreen in UEFI/Windows yet)
 - The package: `boot-sweet.img`, `sweet_drivers\`, `WLAN-standalone\` and a **Windows 11 ARM64 ISO** (23H2 tested)

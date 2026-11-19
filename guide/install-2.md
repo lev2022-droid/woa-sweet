@@ -7,7 +7,7 @@
 ### Prerequisites
 - Completed [Partitioning your device](install-1.md)
 - The phone's Windows (`WINSWEET`) and ESP partitions visible from the PC
--  [UEFI](https://github.com/lev2022-droid/woa-sweet/releases/download/UEFI/boot-sweet.img)
+-  [UEFI](https://github.com/lev2022-droid/woa-sweet/releases/download/UEFI/test-SWEET-EDK2.img)
 -  [Drivers](https://github.com/lev2022-droid/woa-sweet/releases/tag/Drivers) 
 
 ### Notes

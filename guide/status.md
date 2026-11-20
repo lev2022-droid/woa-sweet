@@ -11,21 +11,21 @@ The project is in beta. The phone boots Windows 11 ARM64 from the Renegade-based
 - [ ] Audio (earpiece codec — loudspeakers need the AW882xx amp driver)
 - [ ] Microphone
 - [ ] Jack 3.5 Audio
-- [x] Battery status
-- [x] Bluetooth
+- [ ] Battery status
+- [ ] Bluetooth
 - [ ] Brightness
 - [ ] Camera
 - [ ] Cellular
 - [ ] SMS
 - [ ] Calls
-- [x] Charging (Very slow ~0.005 W only )
+- [ ] Charging 
 - [x] Display
 - [ ] GPU
 - [ ] Touchscreen (Goodix GT9896 driver in development — use a USB mouse)
-- [x] Vibration
+- [ ] Vibration
 - [x] UFS
-- [x] USB
-- [x] Wi-Fi
+- [ ] USB (usb in development )
+- [ ] Wi-Fi
 
 #### Sensors
 - [ ] Accelerometer
